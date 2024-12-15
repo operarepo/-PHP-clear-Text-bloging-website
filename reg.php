@@ -51,7 +51,7 @@
             var password = $('#password').val();
 
             $.ajax({
-                url: 'ajax/reg.php',
+                url: 'ajax_engine/reg.php',
                 type: 'POST',
                 cache: false, 
                 data: {'username': name, 'email': email, 'login': login, 'age': age, 'password': password},

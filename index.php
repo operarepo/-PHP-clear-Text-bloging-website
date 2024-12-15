@@ -9,7 +9,15 @@
   <main class="container mt-8">
     <div class="row">
       <div class="col-md-8 mb-2">
-      Основная часть сайта
+        <?php
+          require_once 'sql_connection.php';
+          $sql = 'SELECT * FROM `articles` ORDER BY `date` DESC';
+          $query = $pdo->query($sql);
+          while ($row = $query->fetch(PDO::FETCH_OBJ)) {
+            echo "<h2>$row->title</h2><br>" . "<p>$row->intro</p><br>" . "<p><b>Автор статьи: </b><mark>$row->author</mark></p>";
+            echo "<h6><button class='btn btn-warning mb-3'>Протичать статью</button></h6>";
+          }
+        ?>
       </div>
       <?php require 'blocks/aside.php'; ?>
     </div>

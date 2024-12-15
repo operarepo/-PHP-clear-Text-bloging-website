@@ -45,7 +45,7 @@
             var password = $('#password').val();
 
             $.ajax({
-                url: 'ajax/auth.php',
+                url: 'ajax_engine/auth.php',
                 type: 'POST',
                 cache: false, 
                 data: {'login': login, 'password': password},
@@ -65,7 +65,7 @@
         });
         $('#exit_btn').click(function () {
             $.ajax({
-                url: 'ajax/exit.php',
+                url: 'ajax_engine/exit.php',
                 type: 'POST',
                 cache: false, 
                 data: {},

@@ -1,5 +1,5 @@
 <?php
-    if($_COOKIE['log'] == '') {
+    if(!isset($_COOKIE['log']) || $_COOKIE['log'] == '') {
         header('Location: /reg.php');
         exit();
     }
@@ -30,7 +30,6 @@
                         <textarea name="text" id="text" class="form-control"></textarea>
                     </div>
                     <div class="alert alert-danger mt-2" id="errorBlock" style="display: none;"></div> <!-- Скрываем блок ошибок по умолчанию -->
-
                     <button type="button" id="article_send" class="btn btn-success mt-2">Добавить</button>
                 </form>
             </div>
@@ -44,10 +43,8 @@
             var title = $('#title').val();
             var intro = $('#intro').val();
             var text = $('#text').val();
-
-
             $.ajax({
-                url: 'ajax/add_article.php',
+                url: 'ajax_engine/add_article.php',
                 type: 'POST',
                 cache: false, 
                 data: {'title': title, 'intro': intro, 'text': text},
