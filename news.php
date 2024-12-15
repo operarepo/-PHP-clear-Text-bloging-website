@@ -22,6 +22,15 @@
             </b><?php require_once 'blocks/publish_date.php'; echo $date; ?></em></p>
             <p><?=$row->intro?><br><br><?=$row->text?></p><br>
         </div>
+        <h3 class="mt-2">Оставить коментарий: </h3>
+        <form action="" method="post" class="w-100">
+                    <div class="form-group">
+                        <label for="comment">Введите коментарий</label>
+                        <textarea type="text" name="comment" id="comment" class="form-control"><?php echo 'Коментарий от ' . $_COOKIE['user_login'] . ':'?></textarea>
+                    </div>
+                    <div class="alert alert-danger mt-2" id="errorBlock" style="display: none;"></div>
+                    <button id="comment_art" class="btn btn-success mt-2">Отправить</button>
+                </form>
     </div>
     <?php 
         require('blocks/aside.php');
@@ -29,6 +38,29 @@
     </div>
 
 </main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $('#comment_art').click(function () {
+            var comment = $('#comment').val();
+            $.ajax({
+                url: 'ajax_engine/coments.php',
+                type: 'POST',
+                cache: false, 
+                data: {'comment':  comment},
+                dataType: 'html',
+                success:function (data) {
+                    if(data == "Опубликовано! ") {
+                        $('#comment').text('Успешно!');
+                        $('#errorBlock').hide();
+                        document.location.reload(true);
+                    } else {
+                        $('#errorBlock').show();
+                        $('#errorBlock').text(data);
+                    }
+                }
+            });
+        });
+    </script>
 <?php require 'blocks/footer.php'; ?>
 
 </body>
