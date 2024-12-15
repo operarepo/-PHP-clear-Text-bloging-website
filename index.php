@@ -8,19 +8,33 @@
 <?php require 'blocks/header.php'; ?>
   <main class="container mt-8">
     <div class="row">
-      <div class="col-md-8 mb-5 mt-5">
+      <div class="col-md-8 mb-1 mt-3">
+        <?php
+        if (isset($_COOKIE['user_login']) && $_COOKIE['user_login'] != ''):
+        ?>
         <?php
           require_once 'sql_connection.php';
           $sql = 'SELECT * FROM `articles` ORDER BY `date` DESC';
           $query = $pdo->query($sql);
           while ($row = $query->fetch(PDO::FETCH_OBJ)) {
-            echo "<h2>$row->title</h2><br>" . "<p>$row->intro</p><br>" . "<p><b>Автор статьи: </b><mark>$row->author</mark></p>";
-            echo "<h6><button class='btn btn-warning mb-3'>Протичать статью</button></h6>";
+            echo "<h2>$row->title</h2><br>" . "<p>$row->intro</p><br>" . "<p class='mb-3'><b>Автор статьи: </b>$row->author</p>
+            <a href='news.php?id=$row->id' title='$row->title>'
+            <h6><button class='btn btn-warning mb-3'>Протичать статью</button></h6></a>";
           }
         ?>
+        <?php
+        else:
+        ?>
+        <h6> Чтобы начать просмотр обпубликованных статей необходимо войти в аккаунт или зарегистрироваться</h6>
+        <?php
+        endif;
+        ?>
       </div>
-      <?php require 'blocks/aside.php'; ?>
-    </div>
+      <?php 
+        require('blocks/aside.php');
+      ?>
+
+      </div>
 
 </main>
 <?php require 'blocks/footer.php'; ?>

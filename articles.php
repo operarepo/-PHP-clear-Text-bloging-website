@@ -14,7 +14,7 @@
     <?php require 'blocks/header.php'; ?>
     <main class="container mt-5"> <!-- Изменил mt-8 на mt-5 для лучшего отображения -->
         <div class="row">
-            <div class="col-md-8 mt-3 mx-auto"> <!-- Добавил mx-auto для центрирования колонки -->
+            <div class="col-md-9 mt-3 mx-auto"> <!-- Добавил mx-auto для центрирования колонки -->
                 <h3 class="text-center">Добавление статьи</h3>
                 <form action="" method="post" class="w-100"> <!-- Установил ширину формы на 100% -->
                     <div class="form-group">
