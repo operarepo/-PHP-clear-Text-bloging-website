@@ -25,7 +25,7 @@
 
     $hash = "asdraegeth5345ygtrg34g32rgwerwg";
     $pass = md5($password .$hash);
-
+    $db = 'blogbd';
     require_once '../sql_connection.php';
     $sql = 'INSERT INTO blog_db_user(username, login, email, password, age) VALUES (?, ?, ?, ?, ?)';
     $query = $pdo->prepare($sql);

@@ -22,9 +22,7 @@
                         <label for="password">Пароль</label>
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-
                     <div class="alert alert-danger mt-2" id="errorBlock" style="display: none;"></div> <!-- Скрываем блок ошибок по умолчанию -->
-
                     <button type="button" id="auth_user" class="btn btn-success mt-2">Войти</button>
                 </form>
                 <?php
@@ -36,7 +34,7 @@
                 endif;
                 ?>
             </div>
-            <?php require 'blocks/aside.php'; ?> <!-- Убедитесь, что aside правильно расположен -->
+            <?php require 'blocks/aside.php'; ?> <!-- Аside для блока спарва, не забыть поменять местами и перевести регистрацию и вход налево как в ВК -->
         </div>
     </main>
     <?php require 'blocks/footer.php'; ?>

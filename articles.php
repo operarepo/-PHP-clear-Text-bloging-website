@@ -1,3 +1,9 @@
+<?php
+    if($_COOKIE['log'] == '') {
+        header('Location: /reg.php');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -25,7 +31,7 @@
                     </div>
                     <div class="alert alert-danger mt-2" id="errorBlock" style="display: none;"></div> <!-- Скрываем блок ошибок по умолчанию -->
 
-                    <button type="button" id="reg_user" class="btn btn-success mt-2">Добавить</button>
+                    <button type="button" id="article_send" class="btn btn-success mt-2">Добавить</button>
                 </form>
             </div>
             <?php require 'blocks/aside.php'; ?> <!-- Убедитесь, что aside правильно расположен -->
@@ -34,7 +40,7 @@
     <?php require 'blocks/footer.php'; ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $('#reg_user').click(function () {
+        $('#article_send').click(function () {
             var title = $('#title').val();
             var intro = $('#intro').val();
             var text = $('#text').val();
@@ -48,7 +54,7 @@
                 dataType: 'html',
                 success:function (data) {
                     if(data == "Вы зарегистрированы на нашем сайте!") {
-                        $('#reg_user').text('Успешно!');
+                        $('#article_send').text('Успешно!');
                         $('#errorBlock').hide();
                         document.location.reload(true);
                     } else {
