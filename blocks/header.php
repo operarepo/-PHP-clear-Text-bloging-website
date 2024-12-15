@@ -11,23 +11,23 @@
             <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
             <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
         <?php
-            if (!isset($_COOKIE['log']) || $_COOKIE['log'] != ''):
+            if (isset($_COOKIE['user_login']) && $_COOKIE['user_login'] != ""):
         ?>
-            <li><a href="../articles.php" class="nav-link px-2 text-white">Добавить статью</a></li>
+        <li><a href="../articles.php" class="nav-link px-2 text-white">Добавить статью</a></li>
         <?php
             endif;
         ?>
         </ul>
         <div class="text-end">
         <?php
-            if (!isset($_COOKIE['log']) || $_COOKIE['log'] == ''):
+            if (!isset($_COOKIE['user_login']) || $_COOKIE['user_login'] == ''):
         ?>
             <a href="auth.php" class="btn btn-outline-light me-1">Войти</a>
             <a href="reg.php" type="button" class="btn btn-warning">Регистрация</a>
         <?php
             else:
         ?>
-        <span class="text-white me-2"><?=$_COOKIE['log']?></span>
+        <span class="text-white me-2"><?=$_COOKIE['user_login']?></span>
         <a href="auth.php" type="button" class="btn btn-warning">Личный кабинет </a>
         <?php
         endif;

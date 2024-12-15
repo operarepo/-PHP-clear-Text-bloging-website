@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-8 mt-3 mx-auto"> <!-- Добавил mx-auto для центрирования колонки -->
                 <?php
-                    if (!isset($_COOKIE['log']) || $_COOKIE['log'] == ''):
+                    if (!isset($_COOKIE['user_login']) || $_COOKIE['user_login'] == ''):
                 ?>
                 <h3 class="text-center">Авторизация</h3>
                 <form action="" method="post" class="w-100"> <!-- Установил ширину формы на 100% -->
@@ -28,7 +28,7 @@
                 <?php
                 else:
                 ?>
-                <h2><?=$_COOKIE['log']?></h2>
+                <h2><?=$_COOKIE['user_login']?></h2>
                 <button class="btn btn-danger" id="exit_btn">Выйти</button>
                 <?php
                 endif;

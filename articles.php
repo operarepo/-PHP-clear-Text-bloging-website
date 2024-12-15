@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_COOKIE['log']) || $_COOKIE['log'] == '') {
+    if(!isset($_COOKIE['user_login']) || $_COOKIE['user_login'] == '') {
         header('Location: /reg.php');
         exit();
     }

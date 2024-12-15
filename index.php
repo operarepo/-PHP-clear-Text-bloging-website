@@ -8,7 +8,7 @@
 <?php require 'blocks/header.php'; ?>
   <main class="container mt-8">
     <div class="row">
-      <div class="col-md-8 mb-2">
+      <div class="col-md-8 mb-5 mt-5">
         <?php
           require_once 'sql_connection.php';
           $sql = 'SELECT * FROM `articles` ORDER BY `date` DESC';
