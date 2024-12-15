@@ -16,8 +16,10 @@
           require_once 'sql_connection.php';
           $sql = 'SELECT * FROM `articles` ORDER BY `date` DESC';
           $query = $pdo->query($sql);
+          
           while ($row = $query->fetch(PDO::FETCH_OBJ)) {
-            echo "<h2>$row->title</h2><br>" . "<p>$row->intro</p><br>" . "<p class='mb-3'><b>Автор статьи: </b>$row->author</p>
+            require_once 'blocks/publish_date.php';
+            echo "<h2>$row->title</h2><br>" . "<p>$row->intro</p><br>" . "<p class='mb-3'><b>Автор статьи: </b>$row->author</p><p class='mb-3'><b>Дата публикации: </b>$date</p>
             <a href='news.php?id=$row->id' title='$row->title>'
             <h6><button class='btn btn-warning mb-3'>Протичать статью</button></h6></a>";
           }
