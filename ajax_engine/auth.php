@@ -16,7 +16,7 @@
 
     $hash = "asdraegeth5345ygtrg34g32rgwerwg";
     $pass = md5($password .$hash);
-
+    $db = 'blogbd';
     require_once '../sql_connection.php';
     $sql = 'SELECT `id` FROM `blog_db_user` WHERE `login` = :login AND `password` = :pass';
     $query = $pdo->prepare($sql);
@@ -24,7 +24,7 @@
         $query->execute([':login' => $login, ':pass' => $pass]);
         $user = $query -> fetch(PDO::FETCH_OBJ);
         if ($user) { // Проверяем, найден ли пользователь
-            setcookie('log', $login, time() + 3600 * 24 * 30, "/");
+            setcookie('user_login', $login, time() + 3600 * 24 * 30, "/");
             echo 'Вы авторизованы на нашем сайте!';
         } else {
             echo 'Пользователь не найден!';

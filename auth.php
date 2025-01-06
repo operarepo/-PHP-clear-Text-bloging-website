@@ -8,9 +8,9 @@
     <?php require 'blocks/header.php'; ?>
     <main class="container mt-5"> <!-- Изменил mt-8 на mt-5 для лучшего отображения -->
         <div class="row">
-            <div class="col-md-8 mt-3 mx-auto"> <!-- Добавил mx-auto для центрирования колонки -->
+            <div class="col-md-9 mt-3 mx-auto"> <!-- Добавил mx-auto для центрирования колонки -->
                 <?php
-                    if (!isset($_COOKIE['log']) || $_COOKIE['log'] == ''):
+                    if (!isset($_COOKIE['user_login']) || $_COOKIE['user_login'] == ''):
                 ?>
                 <h3 class="text-center">Авторизация</h3>
                 <form action="" method="post" class="w-100"> <!-- Установил ширину формы на 100% -->
@@ -22,21 +22,19 @@
                         <label for="password">Пароль</label>
                         <input type="password" name="password" id="password" class="form-control">
                     </div>
-
                     <div class="alert alert-danger mt-2" id="errorBlock" style="display: none;"></div> <!-- Скрываем блок ошибок по умолчанию -->
-
                     <button type="button" id="auth_user" class="btn btn-success mt-2">Войти</button>
                 </form>
                 <?php
                 else:
                 ?>
-                <h2><?=$_COOKIE['log']?></h2>
+                <h2><?=$_COOKIE['user_login']?></h2>
                 <button class="btn btn-danger" id="exit_btn">Выйти</button>
                 <?php
                 endif;
                 ?>
             </div>
-            <?php require 'blocks/aside.php'; ?> <!-- Убедитесь, что aside правильно расположен -->
+            <?php require 'blocks/aside.php'; ?> <!-- Аside для блока спарва, не забыть поменять местами и перевести регистрацию и вход налево как в ВК -->
         </div>
     </main>
     <?php require 'blocks/footer.php'; ?>
@@ -47,7 +45,7 @@
             var password = $('#password').val();
 
             $.ajax({
-                url: 'ajax/auth.php',
+                url: 'ajax_engine/auth.php',
                 type: 'POST',
                 cache: false, 
                 data: {'login': login, 'password': password},
@@ -67,7 +65,7 @@
         });
         $('#exit_btn').click(function () {
             $.ajax({
-                url: 'ajax/exit.php',
+                url: 'ajax_engine/exit.php',
                 type: 'POST',
                 cache: false, 
                 data: {},
@@ -81,3 +79,4 @@
     </script>
 </body>
 </html>
+<!-- Вылезает текстом ошибка перед логином пользователя -->
