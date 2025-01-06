@@ -1,9 +1,8 @@
 <?php
     $user = 'root';
     $par = '';
-    $db = 'blogbd';
     $host = 'localhost';
-
+    $db = 'blogbd';
     $dsn = 'mysql:host=' .$host. ';dbname=' .$db;
     $pdo = new PDO($dsn, $user, $par);
 ?>
